@@ -1,11 +1,33 @@
 <script>
+
     export default { 
         // Add Code Here to complete the task
         // Note: DO NOT USE "eval()". In security, "eval" is considered "evil"!!!
+        data(){
+            return {
+                x: 0, 
+                y: 0,
+                operators: ['+', '-', '*', '/', '%'],
+                selectedOp: ''
+            }
+        },
+        computed: {
+            result(){
+                // checking the value of the selectedOp 
+                switch(this.selectedOp){
+                    case "+": return this.x + this.y;
+                    case "-": return this.x - this.y;
+                    case "*": return this.x * this.y;
+                    case "/": return this.x / this.y;
+                    case "%": return this.x % this.y;
+                }
+            }
+        }
     }
 </script>
 
 <template>
+    <!-- v-model used for the two way data sync -->
     <p>x <input v-model.number="x"></p>
     <select v-model="selectedOp">
         <option v-for="op in operators" >{{ op }}</option>
